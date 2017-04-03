@@ -11,6 +11,6 @@
   text-decoration: underline;
 }
 
-#location-inspect {
-  display: none;
+ul {
+  list-style: none;
 }

@@ -1,45 +1,43 @@
 // BACK END
-function Location(name, description) {
+
+function TodoItem(name, doneStatus) {
   this.name = name;
-  this.description = description;
+  this.doneStatus = doneStatus;
 }
 
-Location.prototype.getLocationDesc = function() {
-  return this.name + " is quite a great place to visit!";
+TodoItem.prototype.UpdateTodoItem = function() {
+  return 0;
 }
 
-Location.prototype.getLocationName = function(){
-  return this.name;
-}
-
+var itemArray = [];
 
 // FRONT END
 $(document).ready(function(){
 
-  $("form#addTask").submit(function(event){
+  $("form#add-task").submit(function(event){
     event.preventDefault();
 
-    var currentTask = $("#task-input").val();
+    // creat new ToDoItem object and add line to list
+    var tmpObj = new TodoItem("myNewObj","True");
+    $("#output1").prepend("<li class='list-item'><input type='checkbox' ><span class='contact'>" + " " + tmpObj.name + "</span></li>");
+    // update itemArray;
+    itemArray.push(tmpObj);
+    console.log("tmp obj: " , tmpObj);
 
-    $("#toDoList").append("<input type='checkbox' name='task' value='"+uniqueID+"'><label id='"+uniqueID+"'>"+currentTask+"</label>");
-  });
+    $("#output1 li:first-child").click(function() {
+      //updade object
 
-  $("form#toDoList").submit(function(event){
-    event.preventDefault();
-    $("input:checkbox[name=task]:checked").each(function(){
+      // console.log("this #output1 li:first-child : " , $(this);
+        // console.log("this checked: " , this:checked);
+      // console.log("this #output1 li:first-child : " , $("this[checked='False']") );
+      // if ($(this:checked)
+      // (tmpObj.doneStatus = "False")
+      //  (tmpObj.doneStatus = "True") ;
 
-      $(this).next("label").remove();
-      $(this).remove();
-
-      //   searchID = ("#" + $(this).val());
-      //   console.log(searchID);
-      // console.log(  $("form#toDoList").find("label"+searchID));
-      //   $("form#toDoList").find("label"+searchID).css("background-color","blue");
-
-      // $("#toDoList").find("#" + $(this).val()).remove();
-      // $(this).remove();
     });
 
-  });
 
+
+
+  });
 });
